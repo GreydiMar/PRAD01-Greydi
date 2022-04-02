@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="PRAD01.Views.PageListaSitios"
+             BackgroundImageSource="hola.jpg">
+
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <xct:ByteArrayToImageSourceConverter x:Key="ByteArrayToImageSourceConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout>
+
+            <CollectionView x:Name="listasitios"
+                            Margin="20"
+                            SelectionMode="Single"
+                            SelectionChanged="listasitios_SelectionChanged">
+
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical"
+                                      ItemSpacing="10" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+
+                            <Label Text="{Binding ID}" />
+                            
+                            <Image 
+                                   HeightRequest="250"
+                                   WidthRequest="280"
+                                   Source="{Binding foto,Converter={StaticResource ByteArrayToImageSourceConverter}}"
+                                   HorizontalOptions="Start"
+                                   Aspect="AspectFit"/>
+                            
+                            <Label Text="{Binding descripcion}" />
+
+                            <Label Text="{Binding latitud}" />
+
+                            <Label Text="{Binding longitud}" />
+
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+
+            </CollectionView>
+
+        </StackLayout>
+    </ContentPage.Content>
+    </ContentPage>
